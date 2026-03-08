@@ -1,0 +1,271 @@
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 700px;
+  margin: 60px auto;
+  line-height: 1.6;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #ffffff;
+  margin-top: 0px;
+}
+
+.contact-inline {
+  text-align: center;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+/* Links (global) */
+a {
+  color: #ffffff;
+  text-decoration-color: rgba(255, 255, 255, 0.6);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 24px 0;
+  padding: 2px 0;
+
+  border-top: 6px solid #ffffff;
+  border-bottom: 6px solid #ffffff;
+}
+
+/* group the text links */
+.menu-links {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.menu-links a {
+  display: inline-block;
+  padding: 0 16px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+/* vertical separators ONLY between text links */
+.menu-links a:not(:last-child) {
+  border-right: 1px solid #333333;
+}
+
+.menu-links a:hover {
+  text-decoration: underline;
+}
+
+.menu-links a.is-active {
+  color: #b0b0b0;
+}
+
+.menu-links a.is-active:hover {
+  text-decoration: none;
+}
+
+.home {
+  display: block;
+  margin-top: 32px;
+}
+
+.photo-frame {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  border: 1px solid #333333;
+  background-color: #0f0f0f;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.photo-frame img {
+  max-width: 95%;
+  max-height: 95%;
+  height: auto;
+  display: block;
+}
+
+.client-profile {
+  margin-top: 32px;
+}
+
+.client-profile h2 {
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+.client-panels {
+  display: flex;
+  gap: 24px;
+}
+
+.client-panel {
+  flex: 1;
+  background-color: #0f0f0f;
+  padding: 20px;
+  border: 1px solid #333333;
+}
+
+#poetry {
+  margin-top: 32px;
+}
+
+#poetry h2 {
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+.poem-intro {
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+.poem-grid {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.poem-card {
+  appearance: none;
+  background-color: #0f0f0f;
+  border: 1px solid #333333;
+  border-radius: 0;
+  color: inherit;
+  cursor: pointer;
+  display: block;
+  font: inherit;
+  padding: 0;
+  text-align: left;
+  width: min(100%, 195px);
+  aspect-ratio: 9 / 19.5;
+  overflow: hidden;
+}
+
+.poem-card img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  background-color: #0f0f0f;
+}
+
+.poem-card:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.lightbox {
+  align-items: center;
+  display: none;
+  inset: 0;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox-backdrop {
+  background: rgba(0, 0, 0, 0.85);
+  inset: 0;
+  position: absolute;
+}
+
+.lightbox-content {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-height: 90vh;
+  max-width: min(90vw, 900px);
+  position: relative;
+  z-index: 1;
+}
+
+.lightbox-image {
+  background-color: #0f0f0f;
+  border: 1px solid #333333;
+  max-height: 90vh;
+  max-width: 90vw;
+}
+
+.lightbox-close {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #333333;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  padding: 6px 10px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+.lightbox-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+#touch {
+  margin-top: 32px;
+}
+
+#touch h2 {
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+.footer {
+  margin-top: 40px;
+  padding-top: 0px;
+  border-top: 6px solid #ffffff;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+/* For mobile scaling. */
+@media (max-width: 768px) {
+  /* Home section: keep this for consistency with your other site pattern */
+  .home {
+    flex-direction: column;
+  }
+
+  /* Add horizontal padding so text doesn't hug screen edges */
+  #music,
+  #poetry,
+  #touch {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Client panels: stack vertically */
+  .client-panels {
+    flex-direction: column;
+  }
+}

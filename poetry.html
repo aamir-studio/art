@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Aamir.Art - Poetry</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- For mobile scaling. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+  <body>
+    <h1>Aamir.Art</h1>
+
+    <nav class="menu">
+      <div class="menu-links">
+        <a href="index.html">About</a>
+        <a href="music.html">Music</a>
+        <a class="is-active" href="poetry.html" aria-current="page">Poetry</a>
+        <a href="touch.html">Get in touch</a>
+      </div>
+    </nav>
+
+    <section id="poetry" class="poem-archive">
+      <div class="poem-grid">
+        <button class="poem-card" type="button" data-full="materials/poetry/poem-01.png">
+          <img
+            src="materials/poetry/poem-01.png"
+            alt="Poem 01"
+            loading="lazy"
+          >
+        </button>
+      </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <div class="lightbox-backdrop" data-lightbox-close></div>
+      <div class="lightbox-content" role="dialog" aria-modal="true" aria-label="Poem preview">
+        <button class="lightbox-close" type="button" aria-label="Close">Close</button>
+        <img class="lightbox-image" alt="">
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© 2026 Aamir Ahmad</p>
+    </footer>
+
+    <script>
+      (function () {
+        var cards = document.querySelectorAll('.poem-card');
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = lightbox.querySelector('.lightbox-image');
+        var closeBtn = lightbox.querySelector('.lightbox-close');
+        var backdrop = lightbox.querySelector('[data-lightbox-close]');
+
+        function openLightbox(src, alt) {
+          lightboxImg.src = src;
+          lightboxImg.alt = alt || 'Poem';
+          lightbox.classList.add('is-open');
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('lightbox-open');
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove('is-open');
+          lightbox.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('lightbox-open');
+          lightboxImg.src = '';
+        }
+
+        cards.forEach(function (card) {
+          card.addEventListener('click', function () {
+            var img = card.querySelector('img');
+            var full = card.getAttribute('data-full') || img.src;
+            openLightbox(full, img.alt);
+          });
+        });
+
+        closeBtn.addEventListener('click', closeLightbox);
+        backdrop.addEventListener('click', closeLightbox);
+
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+            closeLightbox();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
